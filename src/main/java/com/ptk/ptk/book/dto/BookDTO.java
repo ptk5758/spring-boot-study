@@ -1,5 +1,7 @@
 package com.ptk.ptk.book.dto;
 
+import com.ptk.ptk.book.entity.BookEntity;
+
 public class BookDTO {
     private Long id;
     private String subject;
@@ -43,4 +45,5 @@ public class BookDTO {
                 ", content='" + content + '\'' +
                 '}';
     }
+
 }
