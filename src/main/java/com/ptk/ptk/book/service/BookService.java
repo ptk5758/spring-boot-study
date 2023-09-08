@@ -46,6 +46,10 @@ public class BookService {
         bookRepository.save(bookEntity);
     }
 
+    public void update(BookDTO bookDTO) {
+        bookRepository.save(BookEntity.toUpdateBookEntity(bookDTO));
+    }
+
 
 
 }

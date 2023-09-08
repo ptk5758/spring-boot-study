@@ -7,7 +7,7 @@ public class BookDTO {
     private String subject;
     private String content;
 
-    public BookDTO(long id, String subject, String content) {
+    public BookDTO(Long id, String subject, String content) {
         this.id = id;
         this.subject = subject;
         this.content = content;
@@ -17,7 +17,7 @@ public class BookDTO {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

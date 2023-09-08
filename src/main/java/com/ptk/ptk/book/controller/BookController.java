@@ -29,10 +29,19 @@ public class BookController {
         return bookService.findById(id);
     }
 
+    @PostMapping("/update")
+    public String updateBook(@RequestBody BookDTO bookDTO) {
+        // System.out.println(bookDTO.toString());
+        bookService.update(bookDTO);
+        return "Good";
+    }
+
     @PostMapping
     public String postBook(@RequestBody BookDTO bookDTO) {
         bookService.save(bookDTO);
         return "Good";
     }
+
+
 
 }

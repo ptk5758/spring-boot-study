@@ -60,7 +60,10 @@ public class BookEntity {
 
 
     public static BookEntity toBookEntity(BookDTO bookDTO) {
-        BookEntity bookEntity = new BookEntity(bookDTO.getId(), bookDTO.getSubject(), bookDTO.getContent());
-        return bookEntity;
+        return new BookEntity(bookDTO.getId(), bookDTO.getSubject(), bookDTO.getContent());
+    }
+
+    public static BookEntity toUpdateBookEntity(BookDTO bookDTO) {
+        return new BookEntity(bookDTO.getId(), bookDTO.getSubject(), bookDTO.getContent());
     }
 }
