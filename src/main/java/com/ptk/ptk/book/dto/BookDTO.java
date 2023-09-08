@@ -46,4 +46,9 @@ public class BookDTO {
                 '}';
     }
 
+    public static BookDTO toBookDTO(BookEntity entity) {
+        return new BookDTO(entity.getId(), entity.getSubject(), entity.getContent());
+
+    }
+
 }

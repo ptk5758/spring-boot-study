@@ -20,8 +20,9 @@ public class BookController {
     }
 
     @GetMapping
-    public List<String> getBook() {
-        return exampleData;
+    public List<BookDTO> getBook() {
+
+        return bookService.findAll();
     }
 
     @PostMapping
