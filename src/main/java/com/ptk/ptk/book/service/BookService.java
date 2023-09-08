@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -26,6 +27,17 @@ public class BookService {
         return bookDTOs;
     }
 
+    public BookDTO findById(Long id) {
+        BookDTO bookDTO = null;
+        Optional<BookEntity> optionalBookEntity = bookRepository.findById(id);
+        // isPresent() == 값이 존재하면
+        // isEmpty() == 값이 없으면
+        if (optionalBookEntity.isPresent()) {
+            bookDTO = BookDTO.toBookDTO(optionalBookEntity.get());
+        }
+        return bookDTO;
+    }
+
     public void save(BookDTO bookDTO) {
 //        System.out.println("save!");
 //        System.out.println(bookDTO.toString());
@@ -33,5 +45,7 @@ public class BookService {
         System.out.println(bookEntity.toString());
         bookRepository.save(bookEntity);
     }
+
+
 
 }
