@@ -5,7 +5,9 @@ import com.ptk.ptk.book.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/book")
@@ -40,6 +42,14 @@ public class BookController {
     public String postBook(@RequestBody BookDTO bookDTO) {
         bookService.save(bookDTO);
         return "Good";
+    }
+
+    @GetMapping("/delete/{id}")
+    public Map<String, String> deleteById(@PathVariable Long id) {
+        Map map = new HashMap();
+        map.put("msg", "Good");
+        bookService.deleteById(id);
+        return map;
     }
 
 

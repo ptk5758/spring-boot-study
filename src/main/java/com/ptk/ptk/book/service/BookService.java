@@ -50,6 +50,10 @@ public class BookService {
         bookRepository.save(BookEntity.toUpdateBookEntity(bookDTO));
     }
 
+    public void deleteById(Long id) {
+        bookRepository.deleteById(id);
+    }
+
 
 
 }
