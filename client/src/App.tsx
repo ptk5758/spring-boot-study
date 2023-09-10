@@ -17,7 +17,7 @@ function App() {
   const requestCookie = async () => {
     axios.post("/dev")
     .then(res=>{console.log(res)});
-  } 
+  }
   return(
     <div>
       sadsa

@@ -27,9 +27,13 @@ public class DevController {
     }
 
     @PostMapping
-    public ResponseEntity requestCookie(HttpServletRequest request) {
+    public ResponseEntity requestCookie(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession(true); // true 세션이 없으면 만들어서 반환
         System.out.println(session.getAttribute("sessionId").toString());
+        Cookie cookie = new Cookie("useId", "ptk5758");
+        cookie.setHttpOnly(false);
+        cookie.setPath("/");
+        response.addCookie(cookie);
 
         return new ResponseEntity(HttpStatus.OK);
     }
