@@ -16,9 +16,15 @@ public class DevController {
 
     @GetMapping
     public Map<String, String> getDev(HttpServletRequest request) {
-        HttpSession session = request.getSession(true); // true 세션이 없으면 만들어서 반환
-        session.setAttribute("sessionId", "dev");
-        System.out.println(session.getAttribute("sessionId").toString());
+        // HttpSession session = request.getSession(true); // true 세션이 없으면 만들어서 반환
+        // session.setAttribute("sessionId", "dev");
+        // System.out.println(session.getAttribute("sessionId").toString());
+        if (request.getCookies() != null) {
+            for (Cookie cookie : request.getCookies()) {
+                System.out.println("Cookie Name : " + cookie.getName());
+                System.out.println("Cookie Value : " + cookie.getValue());
+            }
+        }
 
         Map map = new HashMap();
         map.put("msg", "Good");
@@ -28,9 +34,9 @@ public class DevController {
 
     @PostMapping
     public ResponseEntity requestCookie(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession(true); // true 세션이 없으면 만들어서 반환
-        System.out.println(session.getAttribute("sessionId").toString());
-        Cookie cookie = new Cookie("useId", "ptk5758");
+        // HttpSession session = request.getSession(true); // true 세션이 없으면 만들어서 반환
+        // System.out.println(session.getAttribute("sessionId").toString());
+        Cookie cookie = new Cookie("cookieId", "ptk5758");
         cookie.setHttpOnly(false);
         cookie.setPath("/");
         response.addCookie(cookie);
