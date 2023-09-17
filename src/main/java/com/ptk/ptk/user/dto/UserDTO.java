@@ -14,7 +14,7 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';
