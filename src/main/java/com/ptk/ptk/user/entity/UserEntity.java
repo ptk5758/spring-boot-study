@@ -1,5 +1,6 @@
 package com.ptk.ptk.user.entity;
 
+import com.ptk.ptk.user.dto.UserDTO;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.NaturalId;
 
@@ -66,4 +67,5 @@ public class UserEntity {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

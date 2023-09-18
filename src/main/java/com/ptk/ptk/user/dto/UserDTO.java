@@ -1,23 +1,28 @@
 package com.ptk.ptk.user.dto;
 
+import com.ptk.ptk.user.entity.UserEntity;
+
 public class UserDTO {
+    private Long uid;
     private String id;
     private String name;
     private String password;
 
-    public UserDTO(String id, String name, String password) {
-        this.id = id;
-        this.name = name;
-        this.password = password;
-    }
-
     @Override
     public String toString() {
         return "UserDTO{" +
-                "id='" + id + '\'' +
+                "uid=" + uid +
+                ", id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public UserDTO(Long uid, String id, String name, String password) {
+        this.uid = uid;
+        this.id = id;
+        this.name = name;
+        this.password = password;
     }
 
     public String getId() {
@@ -42,5 +47,18 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
+    }
+
+    public static UserDTO toUserDTO(UserEntity entity) {
+        UserDTO user = new UserDTO(entity.getUid(), entity.getId(), entity.getName(), entity.getPassword());
+        return user;
     }
 }

@@ -27,7 +27,13 @@ public class UserController {
     @PostMapping
     public Map<String, String> signId(@RequestBody UserDTO user) {
         Map<String, String> result = new HashMap<String, String>();
-        userService.signIn(1l);
+        result.put("message", "Good");
+        UserDTO userDTO = userService.signIn(user);
+        if (userDTO != null) {
+            System.out.println(userDTO.toString());
+        } else {
+            System.out.println("사용자 없음");
+        }
         return result;
     }
 }

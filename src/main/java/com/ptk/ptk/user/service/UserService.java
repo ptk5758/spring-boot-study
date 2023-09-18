@@ -21,12 +21,18 @@ public class UserService {
     private String sha256Encode(String plainPassword) {
         return Hashing.sha256().hashString(plainPassword, StandardCharsets.UTF_8).toString();
     }
-    public void signIn(Long id) {
-        UserEntity user = null;
-        Optional<UserEntity> optionalUser = userRepository.findById(id);
+    public UserDTO signIn(UserDTO userDTO) {
+        UserDTO user = null;
+        Optional<UserEntity> optionalUser = userRepository.findById(userDTO.getId());
+        // DB에서 아이디가 있는경우
         if (optionalUser.isPresent()) {
-            System.out.println("Find By Id => "+optionalUser.get().toString());
+            // System.out.println("Find By Id => "+optionalUser.get().toString());
+            UserEntity entity = optionalUser.get();
+            // DB의 비밀번호와 입력한 비밀번호가 같은경우
+            if (entity.getPassword().equals(userDTO.getPassword()))
+                user = UserDTO.toUserDTO(entity);
         }
+        return user;
     }
 
     public void signUp(UserDTO user) {
