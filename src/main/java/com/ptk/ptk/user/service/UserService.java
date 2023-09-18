@@ -21,7 +21,7 @@ public class UserService {
     private String sha256Encode(String plainPassword) {
         return Hashing.sha256().hashString(plainPassword, StandardCharsets.UTF_8).toString();
     }
-    public void signIn(String id) {
+    public void signIn(Long id) {
         UserEntity user = null;
         Optional<UserEntity> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {

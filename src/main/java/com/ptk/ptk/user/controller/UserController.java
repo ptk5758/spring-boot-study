@@ -27,7 +27,7 @@ public class UserController {
     @PostMapping
     public Map<String, String> signId(@RequestBody UserDTO user) {
         Map<String, String> result = new HashMap<String, String>();
-        userService.signIn(user.getId());
+        userService.signIn(1l);
         return result;
     }
 }

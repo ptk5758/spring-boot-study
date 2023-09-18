@@ -1,20 +1,21 @@
 package com.ptk.ptk.user.entity;
 
 import com.sun.istack.NotNull;
+import org.hibernate.annotations.NaturalId;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
 public class UserEntity {
 
-    @NotNull
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long uid;
 
-    @Id
-    @Column
-    @NotNull
+    @NaturalId
+    @Column(nullable = false)
     private String id;
 
     @Column
